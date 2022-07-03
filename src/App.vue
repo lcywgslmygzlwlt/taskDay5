@@ -3,7 +3,7 @@
     <!-- 除了驼峰, 还可以使用-转换链接 -->
     <TodoHeader @btnAdd="btnAddFn"></TodoHeader>
     <TodoMain :list="listFn" @dele="deleFn"></TodoMain>
-    <TodoFooter :count="count" @change="changeFn"></TodoFooter>
+    <TodoFooter :count="count" @change="changeFn" @clear="clearFn"></TodoFooter>
   </section>
 </template>
 
@@ -44,6 +44,9 @@ export default {
     },
     changeFn(val) {
       this.gitVal = val;
+    },
+    clearFn() {
+      this.list = this.list.filter((ele) => ele.isDone == false);
     },
   },
   computed: {
