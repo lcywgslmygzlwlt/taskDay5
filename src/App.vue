@@ -3,7 +3,7 @@
     <!-- 除了驼峰, 还可以使用-转换链接 -->
     <TodoHeader @btnAdd="btnAddFn"></TodoHeader>
     <TodoMain :list="list" @dele="deleFn"></TodoMain>
-    <TodoFooter></TodoFooter>
+    <TodoFooter :count="count"></TodoFooter>
   </section>
 </template>
 
@@ -40,6 +40,11 @@ export default {
     deleFn(id) {
       const index = this.list.filter((ele) => ele.id == id);
       this.list.splice(index, 1);
+    },
+  },
+  computed: {
+    count() {
+      return this.list.filter((ele) => !ele.isDone).length;
     },
   },
   components: {
