@@ -2,7 +2,7 @@
   <section class="todoapp">
     <!-- 除了驼峰, 还可以使用-转换链接 -->
     <TodoHeader @btnAdd="btnAddFn"></TodoHeader>
-    <TodoMain :list="list"></TodoMain>
+    <TodoMain :list="list" @dele="deleFn"></TodoMain>
     <TodoFooter></TodoFooter>
   </section>
 </template>
@@ -36,6 +36,10 @@ export default {
         name: val,
         isDone: false,
       });
+    },
+    deleFn(id) {
+      const index = this.list.filter((ele) => ele.id == id);
+      this.list.splice(index, 1);
     },
   },
   components: {
